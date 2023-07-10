@@ -11,18 +11,18 @@
     $message = "Name: ".$name."\nEmail: ".$email."\nPhone: ".$phone."\nSuburb: ".$message;
     $headers = "From: ".$email;
 
-    // Send email
-   
+    // Grab info from Honeypot Field
     $honeypot = $_POST['honeypot'];
     
-    //check if the honeypot field is filled out. If not, send a mail.
-    if( ! empty( $honeypot ) ){
+    // Send email
+    //check if the honeypot field is filled out. If anything is typed inside, return it(discard). If not, send a mail.
+    if(!empty( $honeypot)){
       return; //you may add code here to echo an error etc.
     }
     else{
         $result = mail($to,$subject,$message,$headers);
         if($result){
-            echo message send with success;
+            echo message sent with success;
         }
     }
     ?>
